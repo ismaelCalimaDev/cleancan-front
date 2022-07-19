@@ -30,3 +30,19 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";*/
+
+.toolbar-title-default {
+  --background: #99D0D3;
+}
+ion-content {
+  --background: #99D0D3;
+}
+ion-input :focus{
+  box-shadow: none !important;
+}
+ion-input {
+  --background: #D9DEE6;
+  input{
+    padding-left: 0.5rem !important;
+  }
+}

@@ -1,0 +1,38 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title class="text-xl font-medium text-white">Registro</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <form [formGroup]="credentials" (ngSubmit)="register()">
+    <div class="flex justify-center my-4 mx-4">
+      <img class="text-center rounded-full" src="assets/images/CleanCanLogo.png">
+    </div>
+    <div class="mx-4">
+      <p class="text-xs items-center font-normal">Nombre*</p>
+      <ion-input class="rounded-lg bg-white mb-4 text-base border-0" type="text" placeholder="Ismael Santiago" formControlName="name"></ion-input>
+      <p class="text-xs items-center font-normal">Correo*</p>
+      <ion-input class="rounded-lg bg-white mb-4 text-base border-0" type="email" placeholder="ismael.santiago@gmail.com" formControlName="email"></ion-input>
+      <p class="text-xs items-center font-normal">Contraseña*</p>
+      <ion-input class="rounded-lg bg-white mb-4 text-base border-0" type="password" placeholder="Contraseña" formControlName="password"></ion-input>
+      <p class="text-xs items-center font-normal">
+        La contraseña debe:
+      </p>
+      <ul class="text-xs items-center font-normal">
+        <li>- Contener al menos 8 caracteres</li>
+        <li>- Contener al menos dos números</li>
+        <li>- Contener al menos una mayúscula</li>
+      </ul>
+      <p class="text-xs items-center font-normal mt-4">Repetir Contraseña*</p>
+      <ion-input class="rounded-lg bg-white mb-4 text-base border-0" type="password" placeholder="Repetir Contraseña" formControlName="password_confirmation"></ion-input>
+      <p class="text-xs items-center font-normal">Teléfono de contacto*</p>
+      <ion-input class="rounded-lg bg-white mb-4 text-base border-0" type="tel" placeholder="626458902" formControlName="phone_number"></ion-input>
+    </div>
+    <div class="flex justify-center">
+      <ion-button [disabled]="credentials.invalid" type="submit" class="mb-3">Registrarse</ion-button>
+    </div>
+  </form>
+</ion-content>
