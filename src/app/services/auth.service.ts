@@ -10,4 +10,7 @@ export class AuthService extends Api{
   public register(user) {
     return this.post<UserResponse>('/register', user)
   }
+  public login(user) {
+    return this.post<UserResponse>('/login', user)
+  }
 }
