@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import {AuthService} from "../../services/auth.service";
+import {CleancanToastService} from "../../services/cleancan-toast.service";
 
 @Component({
   selector: 'app-register',
@@ -12,6 +13,7 @@ export class RegisterPage implements OnInit {
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
+    private cleancanToastservice: CleancanToastService
   ) {
     this.credentials = this.fb.group({
       name: ['',[Validators.required]],
@@ -31,6 +33,8 @@ export class RegisterPage implements OnInit {
   public register() {
     this.authService.register(this.credentials.value).subscribe(response =>{
       console.log(response);
+    }, error => {
+      this.cleancanToastservice.displayToast('Ha ocurrido un error en el proceso de registro.')
     });
   }
 
