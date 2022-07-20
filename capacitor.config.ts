@@ -1,10 +1,16 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'io.ionic.starter',
-  appName: 'cleancan-front',
+  appId: 'com.calimasolutions.cleancan',
+  appName: 'Clean Can',
   webDir: 'www',
-  bundledWebRuntime: false
+  bundledWebRuntime: false,
+  loggingBehavior: 'debug',
+  server: {
+    hostname: 'localhost:4200',
+    androidScheme: 'https',
+    cleartext: true
+  }
 };
 
 export default config;
