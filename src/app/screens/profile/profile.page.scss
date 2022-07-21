@@ -3,3 +3,12 @@
   height: calc(100% - 3.5rem);
   overflow-y: scroll;
 }
+ion-title{
+  --color: black
+}
+ion-button {
+  --color: black !important;
+}
+ion-input {
+  @apply bg-gray-300;
+}

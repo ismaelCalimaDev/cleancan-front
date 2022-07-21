@@ -13,4 +13,10 @@ export class AuthService extends Api{
   public login(user) {
     return this.post<UserResponse>('/login', user)
   }
+  public getProfile() {
+    return this.get<UserResponse>('/profile')
+  }
+  public editProfile(user) {
+    return this.put<UserResponse>('/profile/edit', user)
+  }
 }
