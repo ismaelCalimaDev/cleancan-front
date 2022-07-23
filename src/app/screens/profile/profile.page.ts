@@ -65,4 +65,7 @@ export class ProfilePage implements OnInit {
   public redirectToCars() {
     this.router.navigateByUrl('tabs/profile/cars')
   }
+  public redirectToCommonQuestions() {
+    this.router.navigateByUrl('tabs/profile/questions')
+  }
 }
