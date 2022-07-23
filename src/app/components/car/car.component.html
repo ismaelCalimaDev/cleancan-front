@@ -1,0 +1,41 @@
+<div class="shadow-2xl grid grid-cols-[3rem_auto_3rem] flex items-center">
+  <div (click)="openModal()" class="ml-2 w-8 h-8 rounded-xl bg-gray-200 flex justify-center items-center row-span-3">
+    <ion-icon class="text-icons" name="car-sport-outline"></ion-icon>
+  </div>
+  <div (click)="openModal()" class="col-span-1">
+    <p class="ml-2 font-semibold text-base text-gradient">{{car.brand + ' '+ car.model}}</p>
+    <p class="ml-2 font-semibold text-gray-300">{{car.plate}}</p>
+  </div>
+  <div (click)="presentActionSheet()" class="row-span-3 flex text-icons justify-end">
+    <ion-icon class="mr-2 w-6 h-6" name="trash-outline"></ion-icon>
+  </div>
+</div>
+<ion-modal [isOpen]="displayModal" #modal [swipeToClose]="false">
+  <ng-template>
+    <ion-header class="ion-no-border">
+      <ion-toolbar color="tertiary">
+        <ion-title class="font-bold text-base text-principal">Editar coche</ion-title>
+        <ion-buttons slot="end">
+          <ion-button class="text-gradient" (click)="closeModal()">X</ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content color="tertiary" class="ion-padding">
+      <form [formGroup]="credentials" (ngSubmit)="editCar()">
+        <div class="mx-4">
+          <p class="text-gray-400 items-center font-normal">Marca*</p>
+          <ion-input class="rounded-lg text-black mb-4 text-base border-0" type="text" formControlName="brand" placeholder="Dacia"></ion-input>
+          <p class="text-gray-400 items-center font-normal">Modelo*</p>
+          <ion-input class="rounded-lg text-black mb-4 text-base border-0" type="text" formControlName="model" placeholder="Duster"></ion-input>
+          <p class="text-gray-400 items-center font-normal">Matrícula*</p>
+          <ion-input class="rounded-lg text-black mb-4 text-base border-0" type="text" formControlName="plate" placeholder="3521-FTE"></ion-input>
+          <p class="text-gray-400 items-center font-normal">Color*</p>
+          <ion-input class="rounded-lg text-black mb-4 text-base border-0" type="text" formControlName="color" placeholder="Azul platino"></ion-input>
+          <div class="flex justify-center">
+            <ion-button color="primary" [disabled]="credentials.invalid" type="submit" class="mb-3">Guardar</ion-button>
+          </div>
+        </div>
+      </form>
+    </ion-content>
+  </ng-template>
+</ion-modal>

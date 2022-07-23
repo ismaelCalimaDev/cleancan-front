@@ -60,6 +60,9 @@ export class ProfilePage implements OnInit {
     })
   }
   public redirectToLocations() {
-    this.router.navigateByUrl('tabs/profile/locations');
+    this.router.navigateByUrl('tabs/profile/locations')
+  }
+  public redirectToCars() {
+    this.router.navigateByUrl('tabs/profile/cars')
   }
 }
