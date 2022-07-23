@@ -7,6 +7,10 @@ const routes: Routes = [
   {
     path: '',
     component: WashesPage
+  },
+  {
+    path: ':id',
+    loadChildren: () => import('../wash-detail/wash-detail.module').then( m => m.WashDetailPageModule)
   }
 ];
 

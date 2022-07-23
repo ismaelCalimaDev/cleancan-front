@@ -9,4 +9,7 @@ export class WashService extends Api {
   public getWashes() {
     return this.get<WashesResponse>('/products')
   }
+  public getWashById(id) {
+    return this.get<WashesResponse>('/product/' + id)
+  }
 }

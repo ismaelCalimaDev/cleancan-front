@@ -1,0 +1,21 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>&nbsp;</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="wash">
+  <div class="m-4 flex flex-col">
+    <p class="font-bold text-lg">{{wash.title}}</p>
+    <div class="my-2 text-gray-400" [innerHTML]="wash.description"></div>
+    <ion-button class="my-2">Añadir coche</ion-button>
+    <ion-button class="my-2">Añadir ubicación</ion-button>
+    <ion-datetime (ionChange)="ionChange($event)" class="my-2">
+      <span slot="time-label">Hora</span>
+    </ion-datetime>
+  </div>
+
+</ion-content>
