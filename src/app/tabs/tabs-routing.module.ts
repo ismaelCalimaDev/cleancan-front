@@ -12,6 +12,10 @@ const routes: Routes = [
         loadChildren: () => import('../screens/profile/profile.module').then( m => m.ProfilePageModule)
       },
       {
+        path: 'washes',
+        loadChildren: () => import('../screens/washes/washes.module').then( m => m.WashesPageModule)
+      },
+      {
         path: 'tab1',
         loadChildren: () => import('../tab1/tab1.module').then(m => m.Tab1PageModule)
       },

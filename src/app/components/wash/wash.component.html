@@ -1,0 +1,9 @@
+<div class="p-2 shadow-2xl grid grid-cols-[3rem_auto_3rem] flex items-center rounded-2xl">
+  <div class="ml-2 w-8 h-8 rounded-xl bg-gray-200 flex justify-center items-center">
+    <ion-icon class="text-icons" name="sparkles-outline"></ion-icon>
+  </div>
+  <div class="ml-2 font-semibold text-gray-300 flex items-center">
+    <p>{{wash.title}}</p>
+  </div>
+  <div class="mr-2 row-span-3 flex text-icons justify-end" [innerHTML]="wash.price + '€'"></div>
+</div>
