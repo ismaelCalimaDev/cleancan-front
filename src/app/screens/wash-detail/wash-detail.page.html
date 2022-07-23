@@ -9,7 +9,7 @@
 
 <ion-content *ngIf="wash">
   <div class="m-4 flex flex-col">
-    <p class="font-bold text-lg">{{wash.title}}</p>
+    <p class="font-bold text-lg">{{wash.title + ' ' + wash.price + ' €'}}</p>
     <div class="my-2 text-gray-400" [innerHTML]="wash.description"></div>
     <ion-button class="my-2">Añadir coche</ion-button>
     <ion-button class="my-2">Añadir ubicación</ion-button>
