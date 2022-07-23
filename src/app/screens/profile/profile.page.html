@@ -1,7 +1,7 @@
 <ion-header class="ion-no-border">
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
+      <ion-back-button text=""></ion-back-button>
     </ion-buttons>
     <ion-title>&nbsp;</ion-title>
   </ion-toolbar>
@@ -23,7 +23,7 @@
         <p class="ml-2 font-semibold text-base text-gradient">Editar perfil</p>
       </div>
 
-      <div class="flex m-4 items-center shadow-2xl h-10">
+      <div (click)="redirectToLocations()" class="flex m-4 items-center shadow-2xl h-10">
         <div class="w-8 h-8 rounded-xl bg-gray-200 flex justify-center items-center">
           <ion-icon class="text-icons" name="navigate-outline"></ion-icon>
         </div>

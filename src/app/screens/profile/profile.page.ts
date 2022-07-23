@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from "../../services/auth.service";
 import {LoadingService} from "../../services/loading.service";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-profile',
@@ -16,7 +17,8 @@ export class ProfilePage implements OnInit {
   constructor (
     private authService: AuthService,
     private fb: FormBuilder,
-    private loadingService: LoadingService
+    private loadingService: LoadingService,
+    private router: Router,
   ) {
 
   }
@@ -56,5 +58,8 @@ export class ProfilePage implements OnInit {
       email: [this.user?.email, [Validators.required, Validators.email]],
       phone_number: [this.user?.phone_number, [Validators.required]],
     })
+  }
+  public redirectToLocations() {
+    this.router.navigateByUrl('tabs/profile/locations');
   }
 }
