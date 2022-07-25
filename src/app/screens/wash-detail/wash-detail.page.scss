@@ -4,3 +4,9 @@
 ion-content {
   --background: #FFFFFF;
 }
+.addButton {
+  width: fit-content;
+}
+ion-input {
+  @apply bg-gray-300;
+}

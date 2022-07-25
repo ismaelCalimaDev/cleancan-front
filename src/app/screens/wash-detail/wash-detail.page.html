@@ -7,15 +7,139 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content *ngIf="wash">
+<ion-content *ngIf="wash && cars && locations">
   <div class="m-4 flex flex-col">
     <p class="font-bold text-lg">{{wash.title + ' ' + wash.price + ' €'}}</p>
     <div class="my-2 text-gray-400" [innerHTML]="wash.description"></div>
-    <ion-button class="my-2">Añadir coche</ion-button>
-    <ion-button class="my-2">Añadir ubicación</ion-button>
+
+    <!-- Car -->
+    <div class="mb-5 mt-3">
+      <p *ngIf="!selectedCar" class="font-semibold">Selecciona un cohe*</p>
+      <p *ngIf="selectedCar" class="font-semibold">Coche selecionado:</p>
+      <div *ngIf="!selectedCar">
+        <div (click)="setSelectedCar(car)" *ngFor="let car of cars" class="my-1">
+          <div  class="shadow-2xl grid grid-cols-[3rem_auto_3rem] flex items-center">
+            <div class="ml-2 w-8 h-8 rounded-xl bg-gray-200 flex justify-center items-center row-span-3">
+              <ion-icon class="text-icons" name="car-sport-outline"></ion-icon>
+            </div>
+            <div class="col-span-1">
+              <p class="ml-2 font-semibold text-base text-gradient">{{car.brand + ' '+ car.model}}</p>
+              <p class="ml-2 font-semibold text-gray-300">{{car.plate}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <ion-button (click)="addCarButtonClicked()" *ngIf="!selectedCar" class="my-2 addButton">+</ion-button>
+      <div *ngIf="selectedCar" class="shadow-2xl grid grid-cols-[3rem_auto_3rem] flex items-center">
+        <div class="ml-2 w-8 h-8 rounded-xl bg-gray-200 flex justify-center items-center row-span-3">
+          <ion-icon class="text-icons" name="car-sport-outline"></ion-icon>
+        </div>
+        <div class="col-span-1">
+          <p class="ml-2 font-semibold text-base text-gradient">{{selectedCar.brand + ' '+ selectedCar.model}}</p>
+          <p class="ml-2 font-semibold text-gray-300">{{selectedCar.plate}}</p>
+        </div>
+      </div>
+      <ion-button (click)="selectedCar = null" *ngIf="selectedCar" class="my-2 addButton">Deshacer</ion-button>
+    </div>
+    <!-- End Car -->
+
+    <!-- Location -->
+    <div class="mb-10 mt-3">
+      <p *ngIf="!selectedLocation" class="font-semibold">Selecciona una zona*</p>
+      <p *ngIf="selectedLocation" class="font-semibold">Zona selecionada:</p>
+      <div *ngIf="!selectedLocation">
+        <div (click)="setSelectedLocation(location)" *ngFor="let location of locations" class="my-1">
+          <div  class="shadow-2xl grid grid-cols-[3rem_auto_3rem] flex items-center">
+            <div class="ml-2 w-8 h-8 rounded-xl bg-gray-200 flex justify-center items-center row-span-3">
+              <ion-icon class="text-icons" name="navigate-outline"></ion-icon>
+            </div>
+            <div class="col-span-1">
+              <p class="ml-2 font-semibold text-base text-gradient">{{location.type}}</p>
+              <p class="ml-2 font-semibold text-gray-300">{{location.street}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <ion-button (click)="addLocationButtonClicked()" *ngIf="!selectedLocation" class="my-2 addButton">+</ion-button>
+      <div *ngIf="selectedLocation" class="shadow-2xl grid grid-cols-[3rem_auto_3rem] flex items-center">
+        <div class="ml-2 w-8 h-8 rounded-xl bg-gray-200 flex justify-center items-center row-span-3">
+          <ion-icon class="text-icons" name="navigate-outline"></ion-icon>
+        </div>
+        <div class="col-span-1">
+          <p class="ml-2 font-semibold text-base text-gradient">{{selectedLocation.type}}</p>
+          <p class="ml-2 font-semibold text-gray-300">{{selectedLocation.street}}</p>
+        </div>
+      </div>
+      <ion-button (click)="selectedLocation = null" *ngIf="selectedLocation" class="my-2 addButton">Deshacer</ion-button>
+    </div>
+    <!-- End Location -->
+
     <ion-datetime (ionChange)="ionChange($event)" class="my-2">
       <span slot="time-label">Hora</span>
     </ion-datetime>
   </div>
 
+  <!-- Car Modal  -->
+  <ion-modal [isOpen]="displayCarModal" #modal [swipeToClose]="false">
+    <ng-template>
+      <ion-header class="ion-no-border">
+        <ion-toolbar color="tertiary">
+          <ion-title class="font-bold text-base text-principal text-center">Nuevo coche</ion-title>
+          <ion-buttons slot="end">
+            <ion-button class="text-gradient" (click)="closeCarModal()">X</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content color="tertiary" class="ion-padding">
+        <form [formGroup]="carCredentials" (ngSubmit)="addNewCar()">
+          <div class="mx-4">
+            <p class="text-gray-400 items-center font-normal">Marca*</p>
+            <ion-input class="rounded-lg text-black mb-4 text-base border-0" type="text" formControlName="brand" placeholder="Dacia"></ion-input>
+            <p class="text-gray-400 items-center font-normal">Modelo*</p>
+            <ion-input class="rounded-lg text-black mb-4 text-base border-0" type="text" formControlName="model" placeholder="Duster"></ion-input>
+            <p class="text-gray-400 items-center font-normal">Matrícula*</p>
+            <ion-input class="rounded-lg text-black mb-4 text-base border-0" type="text" formControlName="plate" placeholder="3521-FTE"></ion-input>
+            <p class="text-gray-400 items-center font-normal">Color*</p>
+            <ion-input class="rounded-lg text-black mb-4 text-base border-0" type="text" formControlName="color" placeholder="Azul platino"></ion-input>
+            <div class="flex justify-center">
+              <ion-button color="primary" [disabled]="carCredentials.invalid" type="submit" class="mb-3">Crear</ion-button>
+            </div>
+          </div>
+        </form>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+  <!-- End Car Modal  -->
+
+  <!-- Location Modal  -->
+  <ion-modal [isOpen]="displayLocationModal" #modal [swipeToClose]="false">
+    <ng-template>
+      <ion-header class="ion-no-border">
+        <ion-toolbar color="tertiary">
+          <ion-title class="font-bold text-base text-principal text-center">Crear Ubicación</ion-title>
+          <ion-buttons slot="end">
+            <ion-button class="text-gradient" (click)="closeLocationModal()">X</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content color="tertiary" class="ion-padding">
+        <form [formGroup]="locationCredentials" (ngSubmit)="addNewLocation()">
+          <div class="mx-4">
+            <p class="text-gray-400 items-center font-normal">Tipo de ubicación*</p>
+            <ion-input class="rounded-lg text-black mb-4 text-base border-0" type="text" formControlName="type" placeholder="Casa"></ion-input>
+            <p class="text-gray-400 items-center font-normal">Provincia*</p>
+            <ion-input class="rounded-lg text-black mb-4 text-base border-0" type="email" formControlName="province" placeholder="Las Palmas"></ion-input>
+            <p class="text-gray-400 items-center font-normal">Código postal*</p>
+            <ion-input class="rounded-lg text-black mb-4 text-base border-0" type="tel" formControlName="postal_code" placeholder="35215"></ion-input>
+            <p class="text-gray-400 items-center font-normal">Calle*</p>
+            <ion-input class="rounded-lg text-black mb-4 text-base border-0" type="tel" formControlName="street" placeholder="Calle Arencibia, 5"></ion-input>
+            <div class="flex justify-center">
+              <ion-button color="primary" [disabled]="locationCredentials.invalid" type="submit" class="mb-3">Crear</ion-button>
+            </div>
+          </div>
+        </form>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+  <!-- End Location Modal  -->
 </ion-content>
