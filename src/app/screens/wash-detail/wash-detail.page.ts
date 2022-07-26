@@ -5,6 +5,7 @@ import { LoadingService } from "../../services/loading.service";
 import {CarService} from "../../services/car.service";
 import {FormBuilder, Validators} from "@angular/forms";
 import {LocationService} from "../../services/location.service";
+import * as dayjs from "dayjs";
 
 @Component({
   selector: 'app-wash-detail',
@@ -27,7 +28,11 @@ export class WashDetailPage implements OnInit {
   public displayLocationModal
   public locationCredentials
 
+  public minDate
   public dateTime
+  public displayCalendar
+  public date
+  public time
   constructor(
     private route: ActivatedRoute,
     private washService: WashService,
@@ -39,6 +44,7 @@ export class WashDetailPage implements OnInit {
 
   ngOnInit() {
     this.fetchData()
+    this.setDate()
   }
   public addCarButtonClicked() {
     this.openCarModal()
@@ -96,6 +102,22 @@ export class WashDetailPage implements OnInit {
       this.loadingService.dismiss()
     })
   }
+  public setDate() {
+    this.minDate = dayjs().add(1,'day').format('YYYY-MM-DDTHH:mm:ss')
+    this.displayCalendar = true
+  }
+  ionChange($event) {
+    this.dateTime = $event.detail.value
+    this.confirmDateTime()
+  }
+  public confirmDateTime() {
+    this.date = dayjs(this.dateTime).format('DD-MM-YYYY')
+    this.time = dayjs(this.dateTime).format('HH:mm:ss')
+    this.displayCalendar = false
+  }
+  public isValidData() {
+    return this.selectedCar && this.selectedLocation && this.dateTime && !this.displayCalendar
+  }
 
   private fetchData() {
     this.loadingService.presentLoading('Cargando lavado')
@@ -128,9 +150,6 @@ export class WashDetailPage implements OnInit {
     }, error => {
       this.loadingService.dismiss()
     })
-  }
-  ionChange($event) {
-    this.dateTime = $event.detail.value
   }
 
 

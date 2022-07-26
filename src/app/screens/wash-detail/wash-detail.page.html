@@ -74,9 +74,35 @@
     </div>
     <!-- End Location -->
 
-    <ion-datetime (ionChange)="ionChange($event)" class="my-2">
+    <ion-datetime #selector
+                  *ngIf="displayCalendar"
+                  (ionChange)="ionChange($event)"
+                  class="my-2"
+                  [min]="minDate"
+                  hour-values="8,9,10,11,12,13,14,15,16,17,18,19"
+                  minute-values="00,15,30,45"
+    >
+      <ion-buttons slot="buttons">
+        <ion-button color="primary" (click)="selector.confirm()">Confirmar</ion-button>
+      </ion-buttons>
       <span slot="time-label">Hora</span>
     </ion-datetime>
+    <div>
+      <p *ngIf="!displayCalendar" class="font-bold">Fecha seleccionada: </p>
+      <div *ngIf="!displayCalendar" class="shadow-2xl grid grid-cols-[3rem_auto_3rem] flex items-center">
+        <div class="ml-2 w-8 h-8 rounded-xl bg-gray-200 flex justify-center items-center row-span-3">
+          <ion-icon class="text-icons" name="calendar-outline"></ion-icon>
+        </div>
+        <div class="col-span-1">
+          <p class="ml-2 font-semibold text-base text-gradient">{{date}}</p>
+          <p class="ml-2 font-semibold text-gray-300">{{time}}</p>
+        </div>
+      </div>
+      <ion-button (click)="displayCalendar = true" *ngIf="!displayCalendar" class="my-2 addButton">Deshacer</ion-button>
+    </div>
+  </div>
+  <div class="flex justify-center">
+    <ion-button [disabled]="!isValidData()" class="my-3">Comprar</ion-button>
   </div>
 
   <!-- Car Modal  -->
