@@ -7,7 +7,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content *ngIf="cars">
+<ion-content>
   <div *ngFor="let car of cars" class="mt-10 mx-4">
     <app-car (cars)="updateCars($event)" [car] = car></app-car>
   </div>

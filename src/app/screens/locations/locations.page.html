@@ -7,7 +7,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content *ngIf="locations">
+<ion-content>
   <div *ngFor="let location of locations" class="mt-10 mx-4">
     <app-location (locations)="updateLocations($event)" [location] = location></app-location>
   </div>
