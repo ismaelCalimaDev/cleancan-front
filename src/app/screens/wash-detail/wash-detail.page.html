@@ -9,7 +9,7 @@
 
 <ion-content>
   <div class="m-4 flex flex-col" *ngIf="wash && cars && locations">
-    <p class="font-bold text-lg">{{wash.title + ' ' + wash.price + ' €'}}</p>
+    <p class="font-bold text-lg text-black">{{wash.title + ' ' + wash.price + ' €'}}</p>
     <div class="my-2 text-gray-400" [innerHTML]="wash.description"></div>
 
     <!-- Car -->
@@ -83,7 +83,7 @@
                   minute-values="00,15,30,45"
     >
       <ion-buttons slot="buttons">
-        <ion-button color="primary" (click)="selector.confirm()">Confirmar</ion-button>
+        <ion-button (click)="selector.confirm()">Confirmar</ion-button>
       </ion-buttons>
       <span slot="time-label">Hora</span>
     </ion-datetime>
@@ -109,14 +109,14 @@
   <ion-modal [isOpen]="displayCarModal" #modal [swipeToClose]="false">
     <ng-template>
       <ion-header class="ion-no-border">
-        <ion-toolbar color="tertiary">
+        <ion-toolbar>
           <ion-title class="font-bold text-base text-principal text-center">Nuevo coche</ion-title>
           <ion-buttons slot="end">
             <div class="text-gradient" (click)="closeCarModal()">X</div>
           </ion-buttons>
         </ion-toolbar>
       </ion-header>
-      <ion-content color="tertiary" class="ion-padding">
+      <ion-content class="ion-padding">
         <form [formGroup]="carCredentials" (ngSubmit)="addNewCar()">
           <div class="mx-4">
             <p class="text-gray-400 items-center font-normal">Marca*</p>
@@ -128,7 +128,7 @@
             <p class="text-gray-400 items-center font-normal">Color*</p>
             <ion-input class="rounded-lg text-black mb-4 text-base border-0" type="text" formControlName="color" placeholder="Azul platino"></ion-input>
             <div class="flex justify-center">
-              <ion-button color="primary" [disabled]="carCredentials.invalid" type="submit" class="mb-3">Crear</ion-button>
+              <ion-button [disabled]="carCredentials.invalid" type="submit" class="mb-3">Crear</ion-button>
             </div>
           </div>
         </form>
@@ -141,14 +141,14 @@
   <ion-modal [isOpen]="displayLocationModal" #modal [swipeToClose]="false">
     <ng-template>
       <ion-header class="ion-no-border">
-        <ion-toolbar color="tertiary">
+        <ion-toolbar>
           <ion-title class="font-bold text-base text-principal text-center">Crear Ubicación</ion-title>
           <ion-buttons slot="end">
             <div class="text-gradient" (click)="closeLocationModal()">X</div>
           </ion-buttons>
         </ion-toolbar>
       </ion-header>
-      <ion-content color="tertiary" class="ion-padding">
+      <ion-content class="ion-padding">
         <form [formGroup]="locationCredentials" (ngSubmit)="addNewLocation()">
           <div class="mx-4">
             <p class="text-gray-400 items-center font-normal">Tipo de ubicación*</p>
@@ -160,7 +160,7 @@
             <p class="text-gray-400 items-center font-normal">Calle*</p>
             <ion-input class="rounded-lg text-black mb-4 text-base border-0" type="tel" formControlName="street" placeholder="Calle Arencibia, 5"></ion-input>
             <div class="flex justify-center">
-              <ion-button color="primary" [disabled]="locationCredentials.invalid" type="submit" class="mb-3">Crear</ion-button>
+              <ion-button [disabled]="locationCredentials.invalid" type="submit" class="mb-3">Crear</ion-button>
             </div>
           </div>
         </form>
