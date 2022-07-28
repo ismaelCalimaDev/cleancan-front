@@ -44,6 +44,13 @@
         <p class="ml-2 font-semibold text-base text-gradient">Preguntas Frecuentes</p>
       </div>
 
+      <div (click)="logOut()" class="flex m-4 items-center shadow-2xl h-10">
+        <div class="w-8 h-8 rounded-xl bg-gray-200 flex justify-center items-center">
+          <ion-icon class="text-red-500" name="exit-outline"></ion-icon>
+        </div>
+        <p class="ml-2 font-semibold text-base text-gray-400">Cerrar sesión</p>
+      </div>
+
     </div>
   <ion-modal [isOpen]="displayModal" #modal [swipeToClose]="false">
     <ng-template>

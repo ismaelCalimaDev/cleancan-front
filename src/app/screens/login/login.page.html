@@ -1,8 +1,5 @@
 <ion-header class="ion-no-border">
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
-    </ion-buttons>
     <ion-title class="text-xl font-medium text-white text-center">Inicio de Sesión</ion-title>
   </ion-toolbar>
   <lib-toastify-toast-container></lib-toastify-toast-container>
@@ -14,15 +11,15 @@
       <img class="text-center rounded-full" src="assets/images/CleanCanLogo.png">
     </div>
     <div class="mx-4">
-      <p class="text-xs items-center font-normal">Correo*</p>
-      <ion-input class="rounded-lg bg-white mb-4 text-base border-0" type="email" placeholder="ismael.santiago@gmail.com" formControlName="email"></ion-input>
-      <p class="text-xs items-center font-normal">Contraseña*</p>
-      <ion-input class="rounded-lg bg-white mb-4 text-base border-0" type="password" placeholder="Contraseña" formControlName="password"></ion-input>
-      <div class="my-5 text-center items-center font-normal text-xs underline">
+      <p class="text-xs items-center font-normal text-black">Correo*</p>
+      <ion-input class="rounded-lg bg-white mb-4 text-base border-0 text-black" type="email" placeholder="ismael.santiago@gmail.com" formControlName="email"></ion-input>
+      <p class="text-xs items-center font-normal text-black">Contraseña*</p>
+      <ion-input class="rounded-lg bg-white mb-4 text-base border-0 text-black" type="password" placeholder="Contraseña" formControlName="password"></ion-input>
+      <div class="my-5 text-center items-center font-normal text-xs underline text-black">
         <a routerLink="/register">¿Todavía no tienes cuenta?</a>
       </div>
       <div class="flex justify-center">
-        <ion-button color="secondary" [disabled]="credentials.invalid" type="submit" class="mb-3">Iniciar Sesión</ion-button>
+        <ion-button [disabled]="credentials.invalid" type="submit" class="mb-3">Iniciar Sesión</ion-button>
       </div>
     </div>
   </form>

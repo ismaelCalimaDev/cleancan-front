@@ -13,27 +13,27 @@
       <img class="text-center rounded-full" src="assets/images/CleanCanLogo.png">
     </div>
     <div class="mx-4">
-      <p class="text-xs items-center font-normal">Nombre*</p>
-      <ion-input class="rounded-lg bg-white mb-4 text-base border-0" type="text" placeholder="Ismael Santiago" formControlName="name"></ion-input>
-      <p class="text-xs items-center font-normal">Correo*</p>
-      <ion-input class="rounded-lg bg-white mb-4 text-base border-0" type="email" placeholder="ismael.santiago@gmail.com" formControlName="email"></ion-input>
-      <p class="text-xs items-center font-normal">Contraseña*</p>
-      <ion-input class="rounded-lg bg-white mb-4 text-base border-0" type="password" placeholder="Contraseña" formControlName="password"></ion-input>
-      <p class="text-xs items-center font-normal">
+      <p class="text-xs items-center font-normal text-black">Nombre*</p>
+      <ion-input class="rounded-lg bg-white mb-4 text-base border-0 text-black" type="text" placeholder="Ismael Santiago" formControlName="name"></ion-input>
+      <p class="text-xs items-center font-normal text-black">Correo*</p>
+      <ion-input class="rounded-lg bg-white mb-4 text-base border-0 text-black" type="email" placeholder="ismael.santiago@gmail.com" formControlName="email"></ion-input>
+      <p class="text-xs items-center font-normal text-black">Contraseña*</p>
+      <ion-input class="rounded-lg bg-white mb-4 text-base border-0 text-black" type="password" placeholder="Contraseña" formControlName="password"></ion-input>
+      <p class="text-xs items-center font-normal text-black">
         La contraseña debe:
       </p>
-      <ul class="text-xs items-center font-normal">
+      <ul class="text-xs items-center font-normal text-black">
         <li>- Contener al menos 8 caracteres</li>
         <li>- Contener al menos dos números</li>
         <li>- Contener al menos una mayúscula</li>
       </ul>
-      <p class="text-xs items-center font-normal mt-4">Repetir Contraseña*</p>
-      <ion-input class="rounded-lg bg-white mb-4 text-base border-0" type="password" placeholder="Repetir Contraseña" formControlName="password_confirmation"></ion-input>
-      <p class="text-xs items-center font-normal">Teléfono de contacto*</p>
-      <ion-input class="rounded-lg bg-white mb-4 text-base border-0" type="tel" placeholder="626458902" formControlName="phone_number"></ion-input>
+      <p class="text-xs items-center font-normal mt-4 text-black">Repetir Contraseña*</p>
+      <ion-input class="rounded-lg bg-white mb-4 text-base border-0 text-black" type="password" placeholder="Repetir Contraseña" formControlName="password_confirmation"></ion-input>
+      <p class="text-xs items-center font-normal text-black">Teléfono de contacto*</p>
+      <ion-input class="rounded-lg bg-white mb-4 text-base border-0 text-black" type="tel" placeholder="626458902" formControlName="phone_number"></ion-input>
     </div>
     <div class="flex justify-center">
-      <ion-button color="secondary" [disabled]="credentials.invalid" type="submit" class="mb-3">Registrarse</ion-button>
+      <ion-button [disabled]="credentials.invalid" type="submit" class="mb-3">Registrarse</ion-button>
     </div>
   </form>
 </ion-content>

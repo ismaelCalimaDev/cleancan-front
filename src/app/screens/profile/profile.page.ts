@@ -3,6 +3,7 @@ import { AuthService } from "../../services/auth.service";
 import {LoadingService} from "../../services/loading.service";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
+import {Api} from "../../services/api.service";
 
 @Component({
   selector: 'app-profile',
@@ -67,5 +68,9 @@ export class ProfilePage implements OnInit {
   }
   public redirectToCommonQuestions() {
     this.router.navigateByUrl('tabs/profile/questions')
+  }
+  public logOut() {
+    this.authService.logout()
+    this.router.navigateByUrl('/login')
   }
 }
