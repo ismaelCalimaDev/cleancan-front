@@ -8,7 +8,7 @@
 </ion-header>
 
 <ion-content>
-  <div class="m-4 flex flex-col">
+  <div class="m-4 flex flex-col" *ngIf="wash && cars && locations">
     <p class="font-bold text-lg">{{wash.title + ' ' + wash.price + ' €'}}</p>
     <div class="my-2 text-gray-400" [innerHTML]="wash.description"></div>
 
@@ -101,7 +101,7 @@
       <ion-button (click)="displayCalendar = true" *ngIf="!displayCalendar" class="my-2 addButton">Deshacer</ion-button>
     </div>
   </div>
-  <div class="flex justify-center">
+  <div *ngIf="wash && cars && locations" class="flex justify-center">
     <ion-button [disabled]="!isValidData()" class="my-3">Comprar</ion-button>
   </div>
 
@@ -112,7 +112,7 @@
         <ion-toolbar color="tertiary">
           <ion-title class="font-bold text-base text-principal text-center">Nuevo coche</ion-title>
           <ion-buttons slot="end">
-            <ion-button class="text-gradient" (click)="closeCarModal()">X</ion-button>
+            <div class="text-gradient" (click)="closeCarModal()">X</div>
           </ion-buttons>
         </ion-toolbar>
       </ion-header>
@@ -144,7 +144,7 @@
         <ion-toolbar color="tertiary">
           <ion-title class="font-bold text-base text-principal text-center">Crear Ubicación</ion-title>
           <ion-buttons slot="end">
-            <ion-button class="text-gradient" (click)="closeLocationModal()">X</ion-button>
+            <div class="text-gradient" (click)="closeLocationModal()">X</div>
           </ion-buttons>
         </ion-toolbar>
       </ion-header>
