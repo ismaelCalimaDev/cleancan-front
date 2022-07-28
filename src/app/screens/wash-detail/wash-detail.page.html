@@ -14,8 +14,8 @@
 
     <!-- Car -->
     <div class="mb-5 mt-3">
-      <p *ngIf="!selectedCar" class="font-semibold">Selecciona un cohe*</p>
-      <p *ngIf="selectedCar" class="font-semibold">Coche selecionado:</p>
+      <p *ngIf="!selectedCar" class="font-semibold text-black">Selecciona un cohe*</p>
+      <p *ngIf="selectedCar" class="font-semibold text-black">Coche selecionado:</p>
       <div *ngIf="!selectedCar">
         <div (click)="setSelectedCar(car)" *ngFor="let car of cars" class="my-1">
           <div  class="shadow-2xl grid grid-cols-[3rem_auto_3rem] flex items-center">
@@ -45,8 +45,8 @@
 
     <!-- Location -->
     <div class="mb-10 mt-3">
-      <p *ngIf="!selectedLocation" class="font-semibold">Selecciona una zona*</p>
-      <p *ngIf="selectedLocation" class="font-semibold">Zona selecionada:</p>
+      <p *ngIf="!selectedLocation" class="font-semibold text-black">Selecciona una zona*</p>
+      <p *ngIf="selectedLocation" class="font-semibold text-black">Zona selecionada:</p>
       <div *ngIf="!selectedLocation">
         <div (click)="setSelectedLocation(location)" *ngFor="let location of locations" class="my-1">
           <div  class="shadow-2xl grid grid-cols-[3rem_auto_3rem] flex items-center">
