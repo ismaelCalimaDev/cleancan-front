@@ -12,7 +12,7 @@
       <div id="open-modal" class="flex justify-center">
         <img class="rounded-full mt-[-1.5rem] mb-2" [src]="'https://ui-avatars.com/api/?name=' + user?.name">
       </div>
-        <p class="font-semibold text-base text-center mb-4">{{user?.name}}</p>
+        <p class="font-semibold text-base text-center mb-4 text-black">{{user?.name}}</p>
     </div>
     <div class="scroll bg-white h-full">
 
@@ -48,14 +48,14 @@
   <ion-modal [isOpen]="displayModal" #modal [swipeToClose]="false">
     <ng-template>
       <ion-header class="ion-no-border">
-        <ion-toolbar color="tertiary">
+        <ion-toolbar>
           <ion-title class="font-bold text-base text-center">Editar perfil</ion-title>
           <ion-buttons slot="end">
             <ion-button (click)="closeModal(modal)">X</ion-button>
           </ion-buttons>
         </ion-toolbar>
       </ion-header>
-      <ion-content color="tertiary" class="ion-padding">
+      <ion-content class="ion-padding">
         <form [formGroup]="credentials" (ngSubmit)="editProfile()">
           <div class="mx-4">
             <p class="text-gray-400 items-center font-normal">Nombre*</p>
