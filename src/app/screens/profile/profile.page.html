@@ -49,9 +49,9 @@
     <ng-template>
       <ion-header class="ion-no-border">
         <ion-toolbar>
-          <ion-title class="font-bold text-base text-center">Editar perfil</ion-title>
+          <ion-title class="font-bold text-base text-principal text-center">Editar perfil</ion-title>
           <ion-buttons slot="end">
-            <div (click)="closeModal(modal)">X</div>
+            <div class="text-gradient mr-2" (click)="closeModal(modal)">X</div>
           </ion-buttons>
         </ion-toolbar>
       </ion-header>
@@ -65,7 +65,7 @@
             <p class="text-gray-400 items-center font-normal">Teléfono*</p>
             <ion-input class="rounded-lg text-black mb-4 text-base border-0" type="tel" formControlName="phone_number"></ion-input>
             <div class="flex justify-center">
-              <ion-button [disabled]="credentials.invalid" type="submit" class="mb-3">Guardar</ion-button>
+              <ion-button [disabled]="credentials.invalid" type="submit" class="mb-3 text-white">Guardar</ion-button>
             </div>
           </div>
         </form>
