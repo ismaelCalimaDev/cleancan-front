@@ -13,14 +13,14 @@
 <ion-modal [isOpen]="displayModal" #modal [swipeToClose]="false">
   <ng-template>
     <ion-header class="ion-no-border">
-      <ion-toolbar color="tertiary">
+      <ion-toolbar>
         <ion-title class="font-bold text-base text-principal text-center">Editar coche</ion-title>
         <ion-buttons slot="end">
           <ion-button class="text-gradient" (click)="closeModal()">X</ion-button>
         </ion-buttons>
       </ion-toolbar>
     </ion-header>
-    <ion-content color="tertiary" class="ion-padding">
+    <ion-content class="ion-padding">
       <form [formGroup]="credentials" (ngSubmit)="editCar()">
         <div class="mx-4">
           <p class="text-gray-400 items-center font-normal">Marca*</p>

@@ -1,3 +1,11 @@
 ion-input {
   @apply bg-gray-300;
 }
+ion-modal {
+  ion-content {
+    --background: white;
+  }
+  .toolbar-title-default {
+    --background: white;
+  }
+}
