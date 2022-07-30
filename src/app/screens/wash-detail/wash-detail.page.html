@@ -102,7 +102,7 @@
     </div>
   </div>
   <div *ngIf="wash && cars && locations" class="flex justify-center">
-    <ion-button [disabled]="!isValidData()" class="my-3">Comprar</ion-button>
+    <ion-button (click)="buyButtonClicked()" [disabled]="!isValidData()" class="my-3">Comprar</ion-button>
   </div>
 
   <!-- Car Modal  -->

@@ -6,6 +6,8 @@ import {CarService} from "../../services/car.service";
 import {FormBuilder, Validators} from "@angular/forms";
 import {LocationService} from "../../services/location.service";
 import * as dayjs from "dayjs";
+import {MyOrdersService} from "../../services/my-orders.service";
+import {Stripe} from "@capacitor-community/stripe";
 
 @Component({
   selector: 'app-wash-detail',
@@ -40,6 +42,7 @@ export class WashDetailPage implements OnInit {
     private carService: CarService,
     private fb: FormBuilder,
     private locationService: LocationService,
+    private storeService: MyOrdersService,
   ) { }
 
   ngOnInit() {
@@ -118,6 +121,26 @@ export class WashDetailPage implements OnInit {
   public isValidData() {
     return this.selectedCar && this.selectedLocation && this.dateTime && !this.displayCalendar
   }
+  public buyButtonClicked() {
+    this.storeService.getStripeKeys().subscribe(async response => {
+      await Stripe.createPaymentFlow({
+        setupIntentClientSecret: response.setup_secret,
+        customerEphemeralKeySecret: response.ephemeral_key.secret,
+        customerId: response.customer_id,
+        merchantDisplayName: 'rdlabo',
+      });
+      await this.presentPaymentFlow();
+      await this.confirmPaymentFlow();
+      //todo check if succeeded
+    })
+  }
+  public presentPaymentFlow(){
+    return Stripe.presentPaymentFlow();
+  }
+
+  public confirmPaymentFlow() {
+    return Stripe.confirmPaymentFlow();
+  }
 
   private fetchData() {
     this.loadingService.presentLoading('Cargando lavado')
@@ -151,6 +174,4 @@ export class WashDetailPage implements OnInit {
       this.loadingService.dismiss()
     })
   }
-
-
 }

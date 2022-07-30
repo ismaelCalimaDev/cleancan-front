@@ -13,7 +13,7 @@ export class Api {
     if (Api.token === null && localStorage.getItem('CC-token')) {
       Api.token = localStorage.getItem('CC-token');
     }
-    this.host = 'https://kike.eu.ngrok.io/api'
+    this.host = 'http://localhost:8000/api'
   }
   getToken(): string {
     return Api.token || localStorage.getItem('CC-token');

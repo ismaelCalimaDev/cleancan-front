@@ -13,3 +13,13 @@ export interface Order {
   car_detail: Car
   product_detail: Wash
 }
+export interface StripeKeysResponse {
+  status: boolean;
+  setup_secret: string;
+  customer_id: string;
+  ephemeral_key: EphemeralKey;
+}
+export class EphemeralKey{
+  id: string;
+  secret: string;
+}
