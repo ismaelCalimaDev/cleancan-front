@@ -26,7 +26,7 @@
 </div>
 <div *ngIf="!((nextWashesSelected && nextWashes?.length === 0) || (!nextWashesSelected && antiqueWashes?.length === 0))" class="scroll bg-white h-full">
   <div *ngFor="let wash of selectedWashes" class="shadow-2xl rounded-xl my-10 mx-4">
-      <p class="text-center text-gray-300 font-semibold">{{wash.product_detail.title + ' ' + wash.product_detail.price + '€'}}</p>
+      <p class="text-center text-gray-300 font-semibold">{{wash.product_detail.title + ' ' + wash.product_detail.price/100 + '€'}}</p>
       <p class="ml-2 font-semibold text-base text-gradient">{{wash.car_detail.brand + ' '+ wash.car_detail.model}}</p>
       <p class="ml-2 font-semibold text-gray-300">{{wash.car_detail.plate}}</p>
       <p class="ml-2 font-semibold text-base text-gradient">{{wash.location_detail.type}}</p>

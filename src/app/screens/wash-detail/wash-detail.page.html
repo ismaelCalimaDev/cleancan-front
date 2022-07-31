@@ -10,7 +10,7 @@
 
 <ion-content>
   <div class="m-4 flex flex-col" *ngIf="wash && cars && locations">
-    <p class="font-bold text-lg text-black">{{wash.title + ' ' + wash.price + ' €'}}</p>
+    <p class="font-bold text-lg text-black">{{wash.title + ' ' + wash.price/100 + ' €'}}</p>
     <div class="my-2 text-gray-400" [innerHTML]="wash.description"></div>
 
     <!-- Car -->

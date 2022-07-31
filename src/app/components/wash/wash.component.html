@@ -5,5 +5,5 @@
   <div class="ml-2 font-semibold text-gray-400 flex items-center">
     <p>{{wash.title}}</p>
   </div>
-  <div class="mr-2 row-span-3 flex text-icons justify-end" [innerHTML]="wash.price + '€'"></div>
+  <div class="mr-2 row-span-3 flex text-icons justify-end" [innerHTML]="wash.price/100 + '€'"></div>
 </div>
