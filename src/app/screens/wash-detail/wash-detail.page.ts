@@ -157,7 +157,18 @@ export class WashDetailPage implements OnInit {
   }
 
   public confirmBuyButtonClicked() {
-    console.log('madafaka')
+    const data = {
+      product_id: this.washId,
+      car_id: this.selectedCar.id,
+      location_id: this.selectedLocation.id,
+      date: dayjs(this.dateTime).format('YYYY-MM-DD') + ' ' + this.time,
+    }
+    this.loadingService.presentLoading('Tramitando pedido')
+    this.storeService.confirmPayment(data).subscribe(()=> {
+      this.loadingService.dismiss()
+    }, error => {
+      this.loadingService.dismiss()
+    })
   }
   private fetchData() {
     this.loadingService.presentLoading('Cargando lavado')

@@ -15,4 +15,7 @@ export class MyOrdersService extends Api {
   public checkIfOperationSucceeded() {
     return this.get<CheckResponse>('/check-operation-succeeded')
   }
+  public confirmPayment(data) {
+    return this.post('/confirmPayment', data)
+  }
 }
