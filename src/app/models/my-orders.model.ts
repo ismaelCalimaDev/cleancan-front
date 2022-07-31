@@ -19,7 +19,11 @@ export interface StripeKeysResponse {
   customer_id: string;
   ephemeral_key: EphemeralKey;
 }
-export class EphemeralKey{
+export interface EphemeralKey{
   id: string;
   secret: string;
+}
+export interface CheckResponse {
+  success: boolean;
+  charge_succeeded: boolean
 }

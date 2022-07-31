@@ -18,3 +18,10 @@ ion-modal {
     --background: white;
   }
 }
+::ng-deep {
+  lib-toastify-toast-container {
+    .toast--error{
+      background-color: #01C6D2 !important;
+    }
+  }
+}

@@ -8,6 +8,7 @@ import {LocationService} from "../../services/location.service";
 import * as dayjs from "dayjs";
 import {MyOrdersService} from "../../services/my-orders.service";
 import {Stripe} from "@capacitor-community/stripe";
+import {CleancanToastService} from "../../services/cleancan-toast.service";
 
 @Component({
   selector: 'app-wash-detail',
@@ -21,11 +22,9 @@ export class WashDetailPage implements OnInit {
   public selectedCar
   public displayCarModal
   public carCredentials
-
   public cars
 
   public locations
-
   public selectedLocation
   public displayLocationModal
   public locationCredentials
@@ -35,6 +34,8 @@ export class WashDetailPage implements OnInit {
   public displayCalendar
   public date
   public time
+
+  public displayConfirmButton
   constructor(
     private route: ActivatedRoute,
     private washService: WashService,
@@ -43,6 +44,7 @@ export class WashDetailPage implements OnInit {
     private fb: FormBuilder,
     private locationService: LocationService,
     private storeService: MyOrdersService,
+    public toastService: CleancanToastService,
   ) { }
 
   ngOnInit() {
@@ -131,7 +133,7 @@ export class WashDetailPage implements OnInit {
       });
       await this.presentPaymentFlow();
       await this.confirmPaymentFlow();
-      //todo check if succeeded
+      await this.checkIfOperationSucceeded();
     })
   }
   public presentPaymentFlow(){
@@ -142,6 +144,21 @@ export class WashDetailPage implements OnInit {
     return Stripe.confirmPaymentFlow();
   }
 
+  public checkIfOperationSucceeded() {
+    this.loadingService.presentLoading('Comprobando datos bancarios')
+    this.storeService.checkIfOperationSucceeded().subscribe(response => {
+      this.loadingService.dismiss()
+      if (response.charge_succeeded) {
+        this.displayConfirmButton = true
+      } else {
+        this.toastService.displayToast('Ha ocurrido un error. Asegúrese de que los datos introducidos sean correctos')
+      }
+    })
+  }
+
+  public confirmBuyButtonClicked() {
+    console.log('madafaka')
+  }
   private fetchData() {
     this.loadingService.presentLoading('Cargando lavado')
     this.route.params.subscribe(

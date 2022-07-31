@@ -5,6 +5,7 @@
     </ion-buttons>
     <ion-title>&nbsp;</ion-title>
   </ion-toolbar>
+    <lib-toastify-toast-container></lib-toastify-toast-container>
 </ion-header>
 
 <ion-content>
@@ -102,7 +103,8 @@
     </div>
   </div>
   <div *ngIf="wash && cars && locations" class="flex justify-center">
-    <ion-button (click)="buyButtonClicked()" [disabled]="!isValidData()" class="my-3">Comprar</ion-button>
+    <ion-button *ngIf="!displayConfirmButton" (click)="buyButtonClicked()" [disabled]="!isValidData()" class="my-3">Comprar</ion-button>
+    <ion-button *ngIf="displayConfirmButton" (click)="confirmBuyButtonClicked()" class="my-3">Confirmar compra</ion-button>
   </div>
 
   <!-- Car Modal  -->
