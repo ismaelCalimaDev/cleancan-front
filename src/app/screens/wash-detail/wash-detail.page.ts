@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from "@angular/router";
+import {ActivatedRoute, Params, Router} from "@angular/router";
 import { WashService } from "../../services/wash.service";
 import { LoadingService } from "../../services/loading.service";
 import {CarService} from "../../services/car.service";
@@ -45,6 +45,7 @@ export class WashDetailPage implements OnInit {
     private locationService: LocationService,
     private storeService: MyOrdersService,
     public toastService: CleancanToastService,
+    private router: Router,
   ) { }
 
   ngOnInit() {
@@ -166,6 +167,7 @@ export class WashDetailPage implements OnInit {
     this.loadingService.presentLoading('Tramitando pedido')
     this.storeService.confirmPayment(data).subscribe(()=> {
       this.loadingService.dismiss()
+      this.router.navigateByUrl('/tabs/buy-completed')
     }, error => {
       this.loadingService.dismiss()
     })

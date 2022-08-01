@@ -20,6 +20,10 @@ const routes: Routes = [
         loadChildren: () => import('../screens/my-orders/my-orders.module').then( m => m.MyOrdersPageModule)
       },
       {
+        path: 'buy-completed',
+        loadChildren: () => import('../screens/buy-completed/buy-completed.module').then( m => m.BuyCompletedPageModule)
+      },
+      {
         path: 'tab1',
         loadChildren: () => import('../tab1/tab1.module').then(m => m.Tab1PageModule)
       },
