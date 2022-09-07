@@ -25,7 +25,8 @@ export class RegisterPage implements OnInit {
         Validators.pattern(/[A-Z]/  ),
         Validators.pattern(/[0-9].*[0-9]/)]],
       password_confirmation: ['', [Validators.required]],
-      phone_number: ['', Validators.required]
+      phone_number: ['', Validators.required],
+      checkBox: [false, Validators.requiredTrue],
     })
   }
 

@@ -15,7 +15,7 @@ const routes: Routes = [
     path: 'login',
     canActivate: [LoginGuard],
     loadChildren: () => import('./screens/login/login.module').then( m => m.LoginPageModule)
-  }
+  },
 ];
 @NgModule({
   imports: [
