@@ -19,4 +19,7 @@ export class AuthService extends Api{
   public editProfile(user) {
     return this.put<UserResponse>('/profile/edit', user)
   }
+  public sendResetPasswordEmail (data) {
+    return this.post('/forgot-password', data)
+  }
 }
